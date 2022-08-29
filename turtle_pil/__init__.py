@@ -1,8 +1,10 @@
 # pil-turtle 💊🐢
 
-from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
 import math
 from typing import Optional, Any, Union, Tuple
+
+from PIL import Image, ImageDraw, ImageFont
 
 
 # default width and height of the image
@@ -130,7 +132,7 @@ class Turtle:
         self._isvisible = False
         self.clear()
 
-    def done(self, filename: str = _FILENAME) -> None:
+    def done(self, filename: Union[str, BytesIO] = _FILENAME) -> None:
         return self.save(filename)
 
     def clear(self) -> None:
@@ -138,7 +140,7 @@ class Turtle:
         self._img = Image.new('RGB', (self._size, self._size), color='White')
         self._drw = ImageDraw.Draw(self._img)
 
-    def save(self, filename: str = _FILENAME) -> None:
+    def save(self, filename: Union[str, BytesIO] = _FILENAME) -> None:
         self._img.save(filename)
 
     def forward(self, distance: float) -> None:
@@ -341,7 +343,7 @@ def reset(size: int = 500) -> None:
     return _turtle().reset(size)
 
 
-def done(filename: str = _FILENAME) -> None:
+def done(filename: Union[str, BytesIO] = _FILENAME) -> None:
     return _turtle().done(filename)
 
 
