@@ -17,18 +17,14 @@ setup(
     long_description='Turtle operations on the top of PIL',
     author='Jordi Petit',
     url='https://github.com/jutge-org/pil-turtle',
-    download_url='https://github.com/jutge-org/pil-turtle/tarball/{}'.format(version),
+    download_url=f'https://github.com/jutge-org/pil-turtle/tarball/{version}',
     keywords=['jutge', 'jutge.org', 'education', 'turtle', 'PIL'],
     license='Apache',
     zip_safe=False,
     include_package_data=True,
     setup_requires=['setuptools'],
-    entry_points={
-        'console_scripts': [
-        ]
-    },
-    scripts=[
-    ]
+    entry_points={'console_scripts': []},
+    scripts=[],
 )
 
 
