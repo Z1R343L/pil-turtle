@@ -29,7 +29,7 @@ class Vec2D(tuple):
         return Vec2D(self[0]*other, self[1]*other)
 
     def __rmul__(self, other):
-        if isinstance(other, int) or isinstance(other, float):
+        if isinstance(other, (int, float)):
             return Vec2D(self[0]*other, self[1]*other)
         return NotImplemented
 
@@ -112,8 +112,8 @@ class Turtle:
 
     def _draw_line(self, x1: float, y1: float, x2: float, y2: float) -> None:
         if self._pendown:
-            x1 = x1 + self._size/2
-            x2 = x2 + self._size/2
+            x1 += self._size/2
+            x2 += self._size/2
             y1 = self._size/2 - y1
             y2 = self._size/2 - y2
             self._drw.line([(x1, y1), (x2, y2)], fill=self._pencolor, width=self._pensize)
@@ -295,7 +295,7 @@ class Turtle:
         fontname = font[0].lower()
         try:
             if fontname[-4:] != ".ttf":
-                fontname = fontname + ".ttf"
+                fontname = f"{fontname}.ttf"
             pilfont = ImageFont.truetype(fontname, fontsize)
         except:
             pilfont = ImageFont.truetype("Arial.ttf", fontsize)
